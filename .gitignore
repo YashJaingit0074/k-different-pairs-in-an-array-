@@ -1,32 +1,25 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+class Solution {
+public:
+    int findPairs(vector<int>& nums, int k) {
+        sort(nums.begin(),nums.end());
+        set<pair<int,int>>ans;
+    
+        int j=1,i=0;
+        while(j<nums.size()){
+        int diff=nums[j]-nums[i];
+        if(diff==k){
+            ans.insert({nums[i],nums[j]});
+            ++i,++j;
+        }
+        else if(diff>k){
+            i++;
+        }
+        else{
+            j++;
+        }
+        if(i==j)
+        j++;
+        }
+    return ans.size();
+    }
+};
